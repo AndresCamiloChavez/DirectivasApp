@@ -10,14 +10,17 @@
         <div class="col-auto">
             <input formControlName="nombre" class="form-control">
         </div>
-        <div class="col-auto">
-            <span *ngIf="tieneError('nombre')" class="form-text"
-            >Este campo es requerido</span>
+        <div  class="col-auto">
+            <span appErrorMsg [mensaje]="mensaje" [color]="color" *ngIf="tieneError('nombre')"
+            ></span>
         </div>
     </div>
     <div class="row mt-5">
         <div class="col">
-            <button class="btn btn-primary">Guardar</button>
+            <button class="btn btn-primary" (click)="changeName()">Guardar</button>
+            <br>
+            <br>
+            <button class="btn btn-primary" (click)="changeColor()">Cambiar color</button>
         </div>
     </div>
 </form>
