@@ -6,13 +6,12 @@ import { Directive, ElementRef, Input, OnChanges, OnInit, SimpleChanges } from '
 export class ErrorMsgDirective implements OnInit, OnChanges{
 
   htmlElement!: ElementRef<HTMLElement>
-  _mensaje: string = '';
+  _mensaje: string = 'Este campo es obligatorio';
   _color : string = 'red';
 
   @Input() set color(valor: string){
-    if(valor){
       this.htmlElement.nativeElement.style.color= valor;
-    }
+      this._color = valor;
   }
 
   @Input() set mensaje(valor: string){
@@ -22,6 +21,9 @@ export class ErrorMsgDirective implements OnInit, OnChanges{
 
   constructor(private el: ElementRef<HTMLElement> ) {
      this.htmlElement = el;
+     this.htmlElement.nativeElement.style.color= this._color;
+     this.htmlElement.nativeElement.innerText = this._mensaje;
+
   }
   
   ngOnInit(): void {
