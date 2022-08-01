@@ -11,7 +11,7 @@
             <input formControlName="nombre" class="form-control">
         </div>
         <div  class="col-auto">
-            <span appErrorMsg *ngIf="tieneError('nombre')"
+            <span appErrorMsg [mensaje]="mensaje" [color]="color" [valido]="!tieneError('nombre')"
             ></span>
         </div>
     </div>
@@ -29,3 +29,11 @@
 <pre>Valido {{miFormulario.valid}}</pre>
 
 <pre>Value: {{miFormulario.value |json}}</pre>
+
+<div class="row" *customIf="miFormulario.valid">
+    <div class="col">
+        <div class="alert alert-primary"> 
+            Todo OK
+        </div>
+    </div>
+</div>
